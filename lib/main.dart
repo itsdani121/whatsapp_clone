@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:whatsapp_clone/styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,8 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   )),
               child: Stack(
                 alignment: Alignment.center,
-                children: [
-                  // Image.network("https://i.redd.it/0j7qth9vdty31.jpg"),
+                children: const [
                   FaIcon(
                     FontAwesomeIcons.whatsapp,
                     color: Colors.white,
@@ -104,8 +104,63 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Home Screen'),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: [
+              Text(
+                'Welcome to Whatsapp Clone',
+                style: TextStyle(
+                    fontSize: 24,
+                    color: darkGreen,
+                    fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: CircleAvatar(
+                  radius: 90,
+                  backgroundImage: AssetImage(
+                    "assets/images/background.jpg",
+                  ),
+                ),
+              ),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: TextStyle(color: Colors.black, fontSize: 24),
+                  children: const <TextSpan>[
+                    TextSpan(
+                        text: 'Read our ',
+                        style: TextStyle(color: Colors.black54)),
+                    TextSpan(
+                        text: 'Privacy Policy.  ',
+                        style: TextStyle(color: Colors.blue)),
+                    TextSpan(
+                        text: 'Tap "Agree and continue" to   accept the ',
+                        style: TextStyle(color: Colors.black54)),
+                    TextSpan(
+                        text: 'Term of Services',
+                        style: TextStyle(color: Colors.blue))
+                  ],
+                ),
+                textScaleFactor: 0.5,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 30),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: darkGreen,
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'Agree and Continue',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
